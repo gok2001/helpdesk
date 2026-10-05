@@ -1,4 +1,7 @@
-export default function ListaChamados({ chamados }) {
+export default function ListaChamados({
+    chamados,
+    loading
+}) {
     return (
         <div>
             <h2>Lista de chamados</h2>
@@ -15,15 +18,24 @@ export default function ListaChamados({ chamados }) {
                 </thead>
 
                 <tbody>
-                    {chamados.map((chamado) => (
-                        <tr key={chamado.id}>
-                            <td>{chamado.solicitante}</td>
-                            <td>{chamado.setor}</td>
-                            <td>{chamado.tipo}</td>
-                            <td>{chamado.descricao}</td>
-                            <td>{chamado.prioridade}</td>
+                    {loading
+                    ?
+                        <tr>
+                            <td>
+                                Carregando chamados...
+                            </td>
                         </tr>
-                    ))}
+                    :
+                        chamados.map((chamado) => (
+                            <tr key={chamado.id}>
+                                <td>{chamado.solicitante}</td>
+                                <td>{chamado.setor}</td>
+                                <td>{chamado.tipo}</td>
+                                <td>{chamado.descricao}</td>
+                                <td>{chamado.prioridade}</td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
 
             </table>
