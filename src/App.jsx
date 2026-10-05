@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useFetch } from './hooks/useFetch';
 import FormChamado from './components/FormChamado';
 import NavBar from './components/NavBar';
+import ListaChamados from './components/ListaChamados';
 
 const url = "http://localhost:3000/chamados"
 
@@ -103,6 +104,12 @@ function App() {
                     setPrioridade={setPrioridade}
                     handleSubmit={handleSubmit}
                     erros={erros}
+                />
+            )}
+
+            {paginaAtiva === "lista" && (
+                <ListaChamados
+                    chamados={chamados}
                 />
             )}
 
