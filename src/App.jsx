@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import FormChamado from './components/FormChamado';
 import { useFetch } from './hooks/useFetch';
+import FormChamado from './components/FormChamado';
+import NavBar from './components/NavBar';
 
 const url = "http://localhost:3000/chamados"
 
@@ -12,6 +13,8 @@ function App() {
     const [prioridade, setPrioridade] = useState("");
 
     const { data: chamados, setData: setChamados, loading } = useFetch(url);
+
+    const [paginaAtiva, onMudarPagina] = useState("form");
 
     const [erros, setErros] = useState({});
 
@@ -80,20 +83,30 @@ function App() {
     }
 
     return (
-        <FormChamado
-            solicitante={solicitante}
-            setSolicitante={setSolicitante}
-            setor={setor}
-            setSetor={setSetor}
-            tipo={tipo}
-            setTipo={setTipo}
-            descricao={descricao}
-            setDescricao={setDescricao}
-            prioridade={prioridade}
-            setPrioridade={setPrioridade}
-            handleSubmit={handleSubmit}
-            erros={erros}
-        />
+        <div>
+            <NavBar
+                paginaAtiva={paginaAtiva}
+                onMudarPagina={onMudarPagina}
+            />
+
+            {paginaAtiva === "form" && (
+                <FormChamado
+                    solicitante={solicitante}
+                    setSolicitante={setSolicitante}
+                    setor={setor}
+                    setSetor={setSetor}
+                    tipo={tipo}
+                    setTipo={setTipo}
+                    descricao={descricao}
+                    setDescricao={setDescricao}
+                    prioridade={prioridade}
+                    setPrioridade={setPrioridade}
+                    handleSubmit={handleSubmit}
+                    erros={erros}
+                />
+            )}
+
+        </div>
     );
 }
 

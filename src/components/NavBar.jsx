@@ -9,14 +9,14 @@ export default function NavBar({
                     className={paginaAtiva === "form" ? "active" : ""}
                     onClick={() => onMudarPagina("form")}
                 >
-
+                    Form
                 </button>
 
                 <button
                     className={paginaAtiva === "lista" ? "active" : ""}
                     onClick={() => onMudarPagina("lista")}
                 >
-
+                    Lista
                 </button>
             </div>
         </nav>
