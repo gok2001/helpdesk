@@ -7,6 +7,15 @@
       "tipo": "Software",
       "descricao": "Planilha não abre mais",
       "prioridade": "Alta"
+    },
+    {
+      "solicitante": "Guilherme",
+      "setor": "ti",
+      "tipo": "hardware",
+      "descricao": "SSD com problema",
+      "prioridade": "alta",
+      "id": "0L5shp2gcGw"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

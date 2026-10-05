@@ -37,7 +37,7 @@ export default function FormChamado({
             >
                 <option value="">Selecione uma opção</option>
                 <option value="ti">TI</option>
-                <option value="RH">RH</option>
+                <option value="rh">RH</option>
                 <option value="financeiro">Financeiro</option>
                 <option value="operacoes">Operações</option>
                 <option value="comercial">Comercial</option>
