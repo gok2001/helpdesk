@@ -59,6 +59,8 @@ function App() {
         setPrioridade("");
 
         setSending(false);
+        
+        onMudarPagina("lista");
     }
 
     function validar() {
@@ -96,30 +98,32 @@ function App() {
                 onMudarPagina={onMudarPagina}
             />
 
-            {paginaAtiva === "form" && (
-                <FormChamado
-                    solicitante={solicitante}
-                    setSolicitante={setSolicitante}
-                    setor={setor}
-                    setSetor={setSetor}
-                    tipo={tipo}
-                    setTipo={setTipo}
-                    descricao={descricao}
-                    setDescricao={setDescricao}
-                    prioridade={prioridade}
-                    setPrioridade={setPrioridade}
-                    sending={sending}
-                    handleSubmit={handleSubmit}
-                    erros={erros}
-                />
-            )}
+            <main className="container py-5">
+                {paginaAtiva === "form" && (
+                    <FormChamado
+                        solicitante={solicitante}
+                        setSolicitante={setSolicitante}
+                        setor={setor}
+                        setSetor={setSetor}
+                        tipo={tipo}
+                        setTipo={setTipo}
+                        descricao={descricao}
+                        setDescricao={setDescricao}
+                        prioridade={prioridade}
+                        setPrioridade={setPrioridade}
+                        sending={sending}
+                        handleSubmit={handleSubmit}
+                        erros={erros}
+                    />
+                )}
 
-            {paginaAtiva === "lista" && (
-                <ListaChamados
-                    chamados={chamados}
-                />
-            )}
-
+                {paginaAtiva === "lista" && (
+                    <ListaChamados
+                        chamados={chamados}
+                        loading={loading}
+                    />
+                )}
+            </main>
         </div>
     );
 }
