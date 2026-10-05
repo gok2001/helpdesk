@@ -9,7 +9,8 @@ export default function FormChamado({
     setDescricao,
     prioridade,
     setPrioridade,
-    handleSubmit
+    handleSubmit,
+    erros
 }) {
     return (
         <form onSubmit={handleSubmit}>
@@ -23,13 +24,16 @@ export default function FormChamado({
                 value={solicitante}
                 onChange={(e) => setSolicitante(e.target.value)}
             />
+            <div>
+                {erros.solicitante}
+            </div>
 
             <label htmlFor="setor">Setor</label>
             <select
                 name="setor"
                 id="setor"
                 value={setor}
-                onChange={(e) => useSyncExternalStore(e.target.value)}
+                onChange={(e) => setSetor(e.target.value)}
             >
                 <option value="">Selecione uma opção</option>
                 <option value="ti">TI</option>
@@ -38,6 +42,9 @@ export default function FormChamado({
                 <option value="operacoes">Operações</option>
                 <option value="comercial">Comercial</option>
             </select>
+            <div>
+                {erros.setor}
+            </div>
 
             <label htmlFor="tipo">Tipo de Problema</label>
             <select
@@ -52,6 +59,9 @@ export default function FormChamado({
                 <option value="rede">Rede</option>
                 <option value="acesso">Acesso</option>
             </select>
+            <div>
+                {erros.tipo}
+            </div>
 
             <label htmlFor="descricao">Descrição do Problema</label>
             <textarea
@@ -62,6 +72,9 @@ export default function FormChamado({
             >
 
             </textarea>
+            <div>
+                {erros.descricao}
+            </div>
 
             <label htmlFor="prioridade">Prioridade</label>
             <select
@@ -75,6 +88,9 @@ export default function FormChamado({
                 <option value="media">Média</option>
                 <option value="alta">Alta</option>
             </select>
+            <div>
+                {erros.prioridade}
+            </div>
 
             <button type="submit">Enviar</button>
         </form>

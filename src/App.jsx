@@ -13,8 +13,16 @@ function App() {
 
     const { data: chamados, setData: setChamados, loading } = useFetch(url);
 
+    const [erros, setErros] = useState({});
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const erros = validar();
+
+        if (Object.keys(erros).length > 0) {
+            return;
+        }
 
         const chamado = {
             solicitante,
@@ -43,6 +51,34 @@ function App() {
         setPrioridade("");
     }
 
+    function validar() {
+        const erros = {};
+
+        if (solicitante.length < 3) {
+            erros.solicitante = "Mínimo 3 caracteres";
+        }
+
+        if (!setor) {
+            erros.setor = "Obrigatório escolher uma opção";
+        }
+
+        if (!tipo) {
+            erros.tipo = "Obrigatório escolher uma opção";
+        }
+
+        if (descricao.length < 10) {
+            erros.descricao = "Mínimo 10 caracteres";
+        }
+
+        if (!prioridade) {
+            erros.prioridade = "Obrigatório escolher uma opção";
+        }
+
+        setErros(erros);
+
+        return erros;
+    }
+
     return (
         <FormChamado
             solicitante={solicitante}
@@ -56,6 +92,7 @@ function App() {
             prioridade={prioridade}
             setPrioridade={setPrioridade}
             handleSubmit={handleSubmit}
+            erros={erros}
         />
     );
 }
