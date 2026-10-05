@@ -17,6 +17,8 @@ function App() {
 
     const [paginaAtiva, onMudarPagina] = useState("form");
 
+    const [sending, setSending] = useState(false);
+
     const [erros, setErros] = useState({});
 
     const handleSubmit = async (e) => {
@@ -27,6 +29,8 @@ function App() {
         if (Object.keys(erros).length > 0) {
             return;
         }
+
+        setSending(true);
 
         const chamado = {
             solicitante,
@@ -53,6 +57,8 @@ function App() {
         setTipo("");
         setDescricao("");
         setPrioridade("");
+
+        setSending(false);
     }
 
     function validar() {
@@ -102,6 +108,7 @@ function App() {
                     setDescricao={setDescricao}
                     prioridade={prioridade}
                     setPrioridade={setPrioridade}
+                    sending={sending}
                     handleSubmit={handleSubmit}
                     erros={erros}
                 />

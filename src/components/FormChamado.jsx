@@ -9,6 +9,7 @@ export default function FormChamado({
     setDescricao,
     prioridade,
     setPrioridade,
+    sending,
     handleSubmit,
     erros
 }) {
@@ -92,7 +93,12 @@ export default function FormChamado({
                 {erros.prioridade}
             </div>
 
-            <button type="submit">Enviar</button>
+            <button
+                type="submit"
+                disabled={sending}
+            >
+                {sending ? "Enviando..." : "Enviar"}
+            </button>
         </form>
     );
 }
